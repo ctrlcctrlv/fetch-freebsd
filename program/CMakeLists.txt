@@ -1,14 +1,6 @@
 set (prog fetchx)
 
-# Drop ability to build with non-Ravenports products
-# Make it a build requirement to have libssl_pic.a from Ravenports
-
-set (libssl ${CMAKE_INSTALL_PREFIX}/libressl/lib/libssl_pic.a)
-set (libcrypto ${CMAKE_INSTALL_PREFIX}/libressl/lib/libcrypto_pic.a)
-set (incssl ${CMAKE_CURRENT_SOURCE_DIR}
-            ${CMAKE_INSTALL_PREFIX}/libressl/include)
-
-set (libs ${libssl} ${libcrypto})
+set (libs ssl crypto)
 
 if (CMAKE_SYSTEM_NAME MATCHES "(Solaris|SunOS)")
    set (libs ${libs} resolv socket nsl)
